@@ -33,7 +33,7 @@ import { MainApi } from '../apis/'
 import { Router } from 'vue-router';
 
 export default defineComponent({
-  name: 'ArticleListPage',
+  name: 'ArticleWritePage',
   props: {
     boardId: {
       type: Number,
