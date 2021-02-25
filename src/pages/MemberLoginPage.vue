@@ -83,6 +83,12 @@ export default defineComponent({
     function login(loginId:string, loginPw:string) {
       mainApi.member_authKey(loginId, loginPw)
         .then(axiosResponse => {
+          alert(axiosResponse.data.msg);
+
+          if ( axiosResponse.data.fail ) {
+            return;
+          }
+
           const authKey = axiosResponse.data.body.authKey;
           const loginedMemberId = axiosResponse.data.body.id;
           const loginedMemberName = axiosResponse.data.body.name;
@@ -99,8 +105,6 @@ export default defineComponent({
             name:loginedMemberName,
             nicknam:loginedMemberNickname,
           };
-
-          alert(axiosResponse.data.msg);
 
           router.replace('/')
         });

@@ -109,10 +109,15 @@ export default defineComponent({
     function writeArtile(boardId:number, title:string, body:string) {
       mainApi.article_doWrite(boardId, title, body)
         .then(axiosResponse => {
-          const newArticleId = axiosResponse.data.body.id;
-          alert(newArticleId + "번 글이 생성되었습니다.");
+          alert(axiosResponse.data.msg);
 
-          router.push("detail?id=" + newArticleId);
+          if ( axiosResponse.data.fail ) {
+            return;
+          }
+
+          const newArticleId = axiosResponse.data.body.id;
+
+          router.replace("detail?id=" + newArticleId);
         });
     }
 
