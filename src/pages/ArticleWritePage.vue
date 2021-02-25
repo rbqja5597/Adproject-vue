@@ -66,10 +66,6 @@ export default defineComponent({
       newArticleBoardIdElRef.value.value = props.boardId + "";
     })
 
-    const state = reactive({
-      articles: [] as IArticle[]
-    });
-
     function checkAndWriteArticle() {
       if ( newArticleBoardIdElRef.value == null ) {
         return;
@@ -108,11 +104,6 @@ export default defineComponent({
       }
 
       writeArtile(parseInt(newArticleBoardIdEl.value), newArticleTitleEl.value, newArticleBodyEl.value);
-
-      newArticleTitleEl.value = '';
-      newArticleBodyEl.value = '';
-
-      newArticleTitleEl.focus();
     }
 
     function writeArtile(boardId:number, title:string, body:string) {
@@ -126,7 +117,6 @@ export default defineComponent({
     }
 
     return {
-      state,
       checkAndWriteArticle,
       newArticleBoardIdElRef,
       newArticleTitleElRef,
