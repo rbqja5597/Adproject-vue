@@ -24,8 +24,9 @@ import MemberJoinPage from './pages/MemberJoinPage.vue'
 // 전역상태 만들기
 const authKey = localStorage.getItem("authKey")
 const loginedMemberId = Util.toIntOrNull(localStorage.getItem("loginedMemberId"))
-const loginedMemberName = localStorage.getItem("loginedMemberName")
-const loginedMemberNickname = localStorage.getItem("loginedMemberNickname")
+const loginedMemberName = Util.toStringOrNull(localStorage.getItem("loginedMemberName"))
+const loginedMemberNickname = Util.toStringOrNull(localStorage.getItem("loginedMemberNickname"))
+const loginedMemberProfileImgUrl = Util.toStringOrNull(localStorage.getItem("loginedMemberProfileImgUrl"))
 
 const globalShare:any = reactive({
   loginedMember:{
@@ -33,6 +34,7 @@ const globalShare:any = reactive({
     id:loginedMemberId,
     name:loginedMemberName,
     nicknam:loginedMemberNickname,
+    profileImgUrl:loginedMemberProfileImgUrl
   },
   isLogined: computed(() => globalShare.loginedMember.id !== null ),
   logout: () => {
@@ -40,6 +42,7 @@ const globalShare:any = reactive({
     localStorage.removeItem("loginedMemberId");
     localStorage.removeItem("loginedMemberName");
     localStorage.removeItem("loginedMemberNickname");
+    localStorage.removeItem("loginedMemberProfileImgUrl");
 
     location.replace('/member/login');
   }
