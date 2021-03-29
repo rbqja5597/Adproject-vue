@@ -72,7 +72,7 @@ export default defineComponent({
       loginIdEl.value = loginIdEl.value.trim();
 
       if ( loginIdEl.value.length == 0 ) {
-        alert('로그인 아이드를 입력해주세요.');
+        alert('로그인 아이디를 입력해주세요.');
         loginIdEl.focus();
 
         return;
@@ -134,6 +134,7 @@ export default defineComponent({
   }
 })
 </script>
+<script></script>
 
 <style scoped>
 </style>
